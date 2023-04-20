@@ -1,0 +1,10 @@
+.body {
+  #sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 250px;
+    height: calc(100vh - var(--height));
+    background-color: aqua;
+  }
+}

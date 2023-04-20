@@ -1,0 +1,17 @@
+
+.btn-arrow{
+  position: absolute;
+  top: 50%;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: aqua;
+}
+.prev{
+    left: 0;
+    transform: translate(10px,-50%);
+}
+.next {
+    right: 0;
+    transform: translate(-10px,-50%);
+}
