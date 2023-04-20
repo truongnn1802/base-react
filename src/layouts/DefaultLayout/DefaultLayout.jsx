@@ -10,7 +10,7 @@ DefaultLayout.propTypes = {
 function DefaultLayout({ children }) {
   return (
     <div>
-      <Header>
+      <Header user='Khách'>
         <Nav />
       </Header>
       <div className='body relative'>

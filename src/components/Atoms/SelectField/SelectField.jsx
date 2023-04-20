@@ -1,4 +1,5 @@
-import { memo } from 'react'
+import { memo, useEffect } from 'react'
+import { initTE, Select } from 'tw-elements'
 import PropTypes from 'prop-types'
 
 SelectField.propTypes = {
@@ -15,6 +16,9 @@ SelectField.defaultProps = {
 }
 
 function SelectField({ dataSource, selectProps, optionProps, width }) {
+  useEffect(() => {
+    initTE({ Select })
+  }, [])
   return (
     <div style={{ width: width, minWidth: width }}>
       <select data-te-select-init {...selectProps}>

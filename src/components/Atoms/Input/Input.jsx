@@ -1,9 +1,10 @@
-import { memo, useRef, useState } from 'react'
+import { memo, useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
+import { initTE, Input } from 'tw-elements'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 
-Input.propTypes = {
+InputField.propTypes = {
   label: PropTypes.string,
   idInput: PropTypes.string.isRequired,
   type: PropTypes.string,
@@ -14,7 +15,7 @@ Input.propTypes = {
   required: PropTypes.bool
 }
 
-Input.defaultProps = {
+InputField.defaultProps = {
   width: 'auto',
   label: 'Nhập text',
   idInput: 'idInput',
@@ -23,12 +24,14 @@ Input.defaultProps = {
   required: false,
   inputProps: { classInput: '', argInput: {} }
 }
-function Input({ label, idInput, type, width, inputProps, name, form, required }) {
+function InputField({ label, idInput, type, width, inputProps, name, form, required }) {
   const { classInput, argInput } = inputProps
 
   const [eye, setEye] = useState(true)
   const eyeRef = useRef()
-
+  useEffect(() => {
+    initTE({ Input })
+  }, [])
   const {
     formState: { errors, touchedFields }
   } = form
@@ -87,4 +90,4 @@ function Input({ label, idInput, type, width, inputProps, name, form, required }
   )
 }
 
-export default memo(Input)
+export default memo(InputField)

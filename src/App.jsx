@@ -1,19 +1,60 @@
-import { useEffect } from 'react'
-import { Dropdown, initTE, Input, Ripple, Select } from 'tw-elements'
-import LayoutOnlyHeader from './layouts/LayoutOnlyHeader/LayoutOnlyHeader'
-import Login from 'src/pages/Login'
-// import DefaultLayout from './layouts/DefaultLayout/DefaultLayout'
-
+// import { useEffect } from 'react'
+import { Fragment, Suspense, useContext, useEffect } from 'react'
+import { Navigate, Route, Routes } from 'react-router-dom'
+import { publicRoutes, privateRoutes } from 'src/routes'
+import { Dropdown, initTE, Ripple } from 'tw-elements'
+import { ConfigContext } from 'src/contexts/ConfigContext'
+import { ROUTE_PATH_LOGIN } from 'src/routes/constant'
 const App = () => {
+  const { isLogin } = useContext(ConfigContext)
   useEffect(() => {
-    initTE({ Select, Input, Ripple, Dropdown })
+    initTE({ Ripple, Dropdown })
   }, [])
 
   return (
     <>
-      <LayoutOnlyHeader>
-        <Login />
-      </LayoutOnlyHeader>
+      <Routes>
+        {publicRoutes?.map((route, index) => {
+          const Component = route?.component
+          const Layout = route?.layout ? route.layout : <Fragment></Fragment>
+          return (
+            <Route
+              path={route.path}
+              element={
+                <Suspense fallback={<p>Loading...</p>}>
+                  <Layout>
+                    <Component />
+                  </Layout>
+                </Suspense>
+              }
+              key={index}
+            />
+          )
+        })}
+        {privateRoutes?.map((route, index) => {
+          const Component = route?.component
+          const Layout = route?.layout ? route.layout : Fragment
+          return (
+            <Route
+              path={route.path}
+              element={
+                isLogin ? (
+                  <Suspense fallback={<p>Loading...</p>}>
+                    <Layout>
+                      <Component />
+                    </Layout>
+                  </Suspense>
+                ) : (
+                  <Navigate to={ROUTE_PATH_LOGIN} replace />
+                )
+              }
+              key={index}
+            />
+          )
+        })}
+        <Route path='*' element={<h1>404 Page Not Found</h1>} />
+      </Routes>
+      {/* <TestComponent/> */}
     </>
   )
 }

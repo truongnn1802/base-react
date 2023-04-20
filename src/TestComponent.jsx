@@ -5,7 +5,8 @@ import { Select, initTE, Input } from 'tw-elements'
 // import Table from 'src/components/Molecules/Table'
 // import SelectField from 'src/components/Atoms/SelectField/SelectField'
 // import Carousel from 'src/components/Molecules/Carousel/Carousel'
-import DashboardPage from 'src/pages/DashboardPage'
+// import DashboardPage from 'src/pages/DashboardPage'
+import LoginPage from './pages/LoginPage'
 
 const TestComponent = () => {
   useEffect(() => {
@@ -50,7 +51,8 @@ const TestComponent = () => {
           <div className='h-[200px]'></div>
         </Card>
       </Carousel> */}
-      <DashboardPage />
+      {/* <DashboardPage /> */}
+      <LoginPage />
     </div>
   )
 }

@@ -1,14 +1,22 @@
+import { useContext } from 'react'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
+
+import { ConfigContext } from 'src/contexts/ConfigContext'
 import InputCustom from 'src/components/Atoms/Input'
 import Button from 'src/components/Atoms/Button'
-function Login() {
+import { Link, useNavigate } from 'react-router-dom'
+import { ROUTE_PATH_HOME } from 'src/routes/constant'
+
+function LoginPage() {
   const schema = yup.object({
     username: yup.string().required('Vui lòng nhập tên đăng nhập!'),
     password: yup.string().required('Vui lòng nhập mật khẩu!')
   })
 
+  const { setLogin } = useContext(ConfigContext)
+  const navigate = useNavigate()
   const form = useForm({
     defaultValues: {
       username: '',
@@ -19,6 +27,8 @@ function Login() {
 
   const handleSubmit = (values) => {
     console.log(values)
+    setLogin('abcd')
+    navigate(ROUTE_PATH_HOME)
   }
   return (
     <section className='h-full bg-neutral-200'>
@@ -53,15 +63,16 @@ function Login() {
                   name='password'
                   width='100%'
                   form={form}
+                  required
                 />
               </div>
               <div className='mb-12 pb-1 pt-1 text-center'>
                 <Button type='submit' text='Đăng nhập' classbutton='w-full' />
                 <br />
                 <div className='text-left mt-[5px]'>
-                  <a href='#!' className='text-[12px] hover:text-[#93ebf8]'>
+                  <Link to='/quen-mat-khau' className='text-[12px] hover:text-[#93ebf8] cursor-pointer'>
                     Quên mật khẩu?
-                  </a>
+                  </Link>
                 </div>
               </div>
               {/* <div className='flex items-center justify-between pb-6'>
@@ -83,4 +94,4 @@ function Login() {
   )
 }
 
-export default Login
+export default LoginPage
