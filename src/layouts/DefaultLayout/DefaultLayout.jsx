@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import PropTypes from 'prop-types'
@@ -7,7 +8,13 @@ import SideNav from '../components/SideNav'
 DefaultLayout.propTypes = {
   children: PropTypes.element.isRequired
 }
-function DefaultLayout({ children }) {
+function DefaultLayout({ children,dataSideNav }) {
+  useEffect(()=>{
+    const sidenavDom = document.getElementById('sidebar')
+    const contentBodyDom = document.getElementById('content-body')
+    contentBodyDom.style.width = `calc(100vw - ${sidenavDom?.offsetWidth}px)` 
+    contentBodyDom.style.marginLeft = `${sidenavDom?.offsetWidth}px` 
+  },[])
   return (
     <div>
       <Header user='Khách'>
@@ -15,9 +22,9 @@ function DefaultLayout({ children }) {
       </Header>
       <div className='body relative'>
         <div id='sidebar'>
-          <SideNav />
+          <SideNav dataNav={dataSideNav} />
         </div>
-        <div className='content-body'>{children}</div>
+        <div id='content-body'>{children}</div>
       </div>
       <Footer />
     </div>

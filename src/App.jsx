@@ -1,10 +1,12 @@
 // import { useEffect } from 'react'
 import { Fragment, Suspense, useContext, useEffect } from 'react'
+// import { useEffect } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { publicRoutes, privateRoutes } from 'src/routes'
 import { Dropdown, initTE, Ripple } from 'tw-elements'
-import { ConfigContext } from 'src/contexts/ConfigContext'
 import { ROUTE_PATH_LOGIN } from 'src/routes/constant'
+import { ConfigContext } from './contexts/ConfigContext'
+// import TestComponent from './TestComponent'
 const App = () => {
   const { isLogin } = useContext(ConfigContext)
   useEffect(() => {

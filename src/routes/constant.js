@@ -1,3 +1,7 @@
 export const ROUTE_PATH_HOME = '/'
 export const ROUTE_PATH_LOGIN = '/dang-nhap'
 export const ROUTE_PATH_FORGOTPASSWORD = '/quen-mat-khau'
+export const ROUTE_PATH_CHANGEPASSWORD = '/doi-mat-khau'
+export const ROUTE_TEST = '/test'
+export const ROUTE_GIAO_AN = '/quan-ly-giao-an'
+export const ROUTE_BAI_GIANG = '/quan-ly-bai-giang'

@@ -39,5 +39,6 @@ export const MENU_NAV = [
         ]
       }
     ]
-  }
+  },
+  { name: 'test', to: '/test' }
 ]
