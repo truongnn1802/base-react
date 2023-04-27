@@ -5,9 +5,12 @@ import './styles.scss'
 Accordion.propTypes = {
   children: PropTypes.element.isRequired,
   title: PropTypes.string,
-  classNameTitle:PropTypes.string,
+  classNameTitle: PropTypes.string
 }
 
+Accordion.defaultProps = {
+  children: <></>
+}
 
 function Accordion({ children, title, classNameTitle }) {
   const [isOpen, setOpen] = useState(false)

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const path = require('path');
+const path = require('path')
 module.exports = {
   parser: '@babel/eslint-parser',
   parserOptions: {
@@ -9,7 +9,16 @@ module.exports = {
   globals: {
     te: true
   },
-  extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:react-hooks/recommended', 'plugin:import/recommended', 'plugin:jsx-a11y/recommended', 'eslint-config-prettier', 'prettier', 'plugin:storybook/recommended'],
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
+    'plugin:import/recommended',
+    'plugin:jsx-a11y/recommended',
+    'eslint-config-prettier',
+    'prettier',
+    'plugin:storybook/recommended'
+  ],
   plugins: ['prettier'],
   settings: {
     react: {
@@ -41,23 +50,30 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'off',
     'jsx-a11y/no-noninteractive-element-interact': 'off',
     'react/no-unknown-property': 'off',
-    "react/display-name": "off",
+    'react/display-name': 'off',
+    'jsx-a11y/label-has-associated-control': 'off',
     // Tăng cường một số rule prettier (copy từ file .prettierrc qua)
-    'prettier/prettier': ['warn', {
-      arrowParens: 'always',
-      semi: false,
-      trailingComma: 'none',
-      tabWidth: 2,
-      endOfLine: 'auto',
-      useTabs: false,
-      singleQuote: true,
-      printWidth: 120,
-      jsxSingleQuote: true
-    }],
-    'import/no-unresolved': ['error', {
-      commonjs: true,
-      caseSensitive: true
-    }],
+    'prettier/prettier': [
+      'warn',
+      {
+        arrowParens: 'always',
+        semi: false,
+        trailingComma: 'none',
+        tabWidth: 2,
+        endOfLine: 'auto',
+        useTabs: false,
+        singleQuote: true,
+        printWidth: 120,
+        jsxSingleQuote: true
+      }
+    ],
+    'import/no-unresolved': [
+      'error',
+      {
+        commonjs: true,
+        caseSensitive: true
+      }
+    ],
     'react/prop-types': 'off'
   }
-};
+}

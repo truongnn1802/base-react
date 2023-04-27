@@ -6,7 +6,14 @@ const Login = lazy(() => import('src/pages/LoginPage'))
 const DashboardPage = lazy(() => import('src/pages/DashboardPage'))
 const ForgotPassword = lazy(() => import('src/pages/ForgotPasswordPage'))
 const LessonManagementPage = lazy(() => import('src/pages/LessonManagementPage'))
-import { ROUTE_PATH_FORGOTPASSWORD, ROUTE_PATH_HOME, ROUTE_PATH_LOGIN, ROUTE_TEST, ROUTE_GIAO_AN,ROUTE_BAI_GIANG } from './constant'
+import {
+  ROUTE_PATH_FORGOTPASSWORD,
+  ROUTE_PATH_HOME,
+  ROUTE_PATH_LOGIN,
+  ROUTE_TEST,
+  ROUTE_GIAO_AN,
+  ROUTE_BAI_GIANG
+} from './constant'
 export const publicRoutes = [
   {
     path: ROUTE_PATH_FORGOTPASSWORD,
@@ -20,7 +27,7 @@ export const publicRoutes = [
   },
   {
     path: ROUTE_TEST,
-    component: () => (<h1>dfadsfdasf</h1>),
+    component: () => <h1>dfadsfdasf</h1>,
     layout: DefaultLayout
   }
 ]
@@ -34,9 +41,10 @@ export const privateRoutes = [
     path: ROUTE_GIAO_AN,
     component: LessonManagementPage,
     layout: DefaultLayout
-  },{
+  },
+  {
     path: ROUTE_BAI_GIANG,
-    component: ()=> (<p>Quan ly bài giảng</p>),
+    component: () => <p>Quan ly bài giảng</p>,
     layout: LayoutOnlyHeader
   }
 ]

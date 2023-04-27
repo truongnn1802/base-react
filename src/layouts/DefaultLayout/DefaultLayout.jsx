@@ -8,13 +8,13 @@ import SideNav from '../components/SideNav'
 DefaultLayout.propTypes = {
   children: PropTypes.element.isRequired
 }
-function DefaultLayout({ children,dataSideNav }) {
-  useEffect(()=>{
+function DefaultLayout({ children, dataSideNav }) {
+  useEffect(() => {
     const sidenavDom = document.getElementById('sidebar')
     const contentBodyDom = document.getElementById('content-body')
-    contentBodyDom.style.width = `calc(100vw - ${sidenavDom?.offsetWidth}px)` 
-    contentBodyDom.style.marginLeft = `${sidenavDom?.offsetWidth}px` 
-  },[])
+    contentBodyDom.style.width = `calc(100vw - ${sidenavDom?.offsetWidth}px)`
+    contentBodyDom.style.marginLeft = `${sidenavDom?.offsetWidth}px`
+  }, [])
   return (
     <div>
       <Header user='Khách'>

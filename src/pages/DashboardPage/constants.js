@@ -1,4 +1,4 @@
-import {ROUTE_GIAO_AN,ROUTE_BAI_GIANG} from 'src/routes/constant'
+import { ROUTE_GIAO_AN, ROUTE_BAI_GIANG } from 'src/routes/constant'
 export const LISTCATEGORY = [
   {
     srcImg: 'https://demo.sirv.com/nuphar.jpg?w=400',

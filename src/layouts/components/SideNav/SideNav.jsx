@@ -32,40 +32,39 @@ function SideNav({ dataNav }) {
         <ul className='relative m-0 list-none px-[0.2rem]' data-te-sidenav-menu-ref>
           {MENU_NAV.map((menu, index) => {
             return (
-              <>
+              <div key={index}>
                 {menu?.childrens ? (
                   <Accordion
                     title={menu?.name}
                     classNameTitle='group flex h-12 cursor-pointer items-center truncate rounded-[5px] px-[5px] text-[1.4rem] text-gray-700 outline-none transition duration-300 ease-linear dark:focus:bg-white/10 dark:active:bg-white/10 font-medium'
                   >
-                    {menu.childrens?.map((child) => (
-                      <div key={new Date().getTime()}>
-                        <span className='group flex h-12 cursor-pointer items-center truncate rounded-[5px] px-[10px] text-[1.4rem] text-gray-700 outline-none transition duration-300 ease-linear font-semibold'>
-                          {child?.group}
-                        </span>
-                        <ul>
-                          {child?.items?.map((sub) => (
-                            <li
-                              key={new Date().getTime()}
-                              className='group flex h-12 cursor-pointer items-center truncate rounded-[5px] px-[15px] text-[1.4rem] text-gray-700 outline-none transition duration-300 ease-linear hover:bg-blue-400/10 hover:text-blue-600 hover:outline-none focus:bg-blue-400/10 focus:text-blue-600 focus:outline-none active:bg-blue-400/10 active:text-blue-600 active:outline-none data-[te-sidenav-state-active]:text-blue-600 data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10'
-                            >
-                              {sub.name}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
+                    <>
+                      {menu.childrens?.map((child, index) => (
+                        <div key={new Date().getTime() + '' + index}>
+                          <span className='group flex h-12 cursor-pointer items-center truncate rounded-[5px] px-[10px] text-[1.4rem] text-gray-700 outline-none transition duration-300 ease-linear font-semibold'>
+                            {child?.group}
+                          </span>
+                          <ul>
+                            {child?.items?.map((sub, i) => (
+                              <li
+                                key={new Date().getTime() + i + ''}
+                                className='group flex h-12 cursor-pointer items-center truncate rounded-[5px] px-[15px] text-[1.4rem] text-gray-700 outline-none transition duration-300 ease-linear hover:bg-blue-400/10 hover:text-blue-600 hover:outline-none focus:bg-blue-400/10 focus:text-blue-600 focus:outline-none active:bg-blue-400/10 active:text-blue-600 active:outline-none data-[te-sidenav-state-active]:text-blue-600 data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10'
+                              >
+                                {sub.name}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </>
                   </Accordion>
                 ) : (
-                  <li
-                    key={index}
-                    className='group flex h-12 cursor-pointer items-center truncate rounded-[5px] px-[5px] text-[1.4rem] text-gray-700 outline-none transition duration-300 ease-linear hover:bg-blue-400/10 hover:text-blue-600 hover:outline-none focus:bg-blue-400/10 focus:text-blue-600 focus:outline-none active:bg-blue-400/10 active:text-blue-600 active:outline-none data-[te-sidenav-state-active]:text-blue-600 data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10'
-                  >
+                  <li className='group flex h-12 cursor-pointer items-center truncate rounded-[5px] px-[5px] text-[1.4rem] text-gray-700 outline-none transition duration-300 ease-linear hover:bg-blue-400/10 hover:text-blue-600 hover:outline-none focus:bg-blue-400/10 focus:text-blue-600 focus:outline-none active:bg-blue-400/10 active:text-blue-600 active:outline-none data-[te-sidenav-state-active]:text-blue-600 data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10'>
                     {menu?.name}
                   </li>
                 )}
                 {index !== MENU_NAV.length - 1 && <hr className='border-gray-300/0.6' />}
-              </>
+              </div>
             )
           })}
         </ul>

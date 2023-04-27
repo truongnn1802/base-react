@@ -10,12 +10,12 @@ import { Link, useNavigate } from 'react-router-dom'
 import { ROUTE_PATH_HOME } from 'src/routes/constant'
 
 function LoginPage() {
+  const { setLogin } = useContext(ConfigContext)
   const schema = yup.object({
     username: yup.string().required('Vui lòng nhập tên đăng nhập!'),
     password: yup.string().required('Vui lòng nhập mật khẩu!')
   })
 
-  const { setLogin } = useContext(ConfigContext)
   const navigate = useNavigate()
   const form = useForm({
     defaultValues: {

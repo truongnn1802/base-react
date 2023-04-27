@@ -14,11 +14,7 @@ function DashboardPage() {
             key={index + item.name}
             handleClick={() => navigate(item?.to)}
           >
-            <img
-              src={item?.srcImg}
-              alt={item?.src}
-              className='inline-block w-[150px] mt-[30px] mb-[20px]'
-            />
+            <img src={item?.srcImg} alt={item?.src} className='inline-block w-[150px] mt-[30px] mb-[20px]' />
             <p className='mb-[20px]'>{item?.name}</p>
           </Card>
         ))}
