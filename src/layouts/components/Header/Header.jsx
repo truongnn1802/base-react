@@ -5,8 +5,9 @@ import { ROUTE_PATH_LOGIN, ROUTE_PATH_CHANGEPASSWORD } from 'src/routes/constant
 import './index.scss'
 import { Link } from 'react-router-dom'
 function Header({ children }) {
-  const { isLogin } = useContext(ConfigContext)
-  const config = isLogin
+  const { account } = useContext(ConfigContext)
+  console.log(account)
+  const config = account
     ? [
         {
           name: 'Thông tin cá nhân',
@@ -27,7 +28,7 @@ function Header({ children }) {
           to: ROUTE_PATH_LOGIN
         }
       ]
-  const user = isLogin ? 'Nguyen' : 'Khách'
+  const user = account ? account?.sub : 'Khách'
   return (
     <div className='h-[56px] w-full shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] app__Header'>
       <div className='wrapper flex items-center h-full'>

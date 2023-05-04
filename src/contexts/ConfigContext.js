@@ -7,7 +7,7 @@ export function ConfigProvider({ children }) {
   const [, setReloadApp] = useState(false)
   const [account, setAccount] = useState(() => {
     const access_token = JSON.parse(localStorage.getItem('access_token'))
-    return access_token ? jwtDecode(access_token) : false
+    return access_token ? jwtDecode(access_token) : null
   })
   const setConfig = (data) => {
     console.log(data)

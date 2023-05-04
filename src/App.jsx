@@ -5,7 +5,7 @@ import { publicRoutes, privateRoutes } from 'src/routes'
 import { Dropdown, initTE, Ripple } from 'tw-elements'
 import {
   ROUTE_PATH_LOGIN,
-  ROLE_SUPERADMIN,
+  ROLE_SUPER_ADMIN,
   ROLE_ADMIN,
   ROLE_TEACHER,
   ROLE_PARENTOFSTUDENT,
@@ -20,14 +20,17 @@ const App = () => {
   }, [])
   const checkRole = () => {
     const listRole = {
-      [ROLE_SUPERADMIN]: [ROLE_SUPERADMIN, ROLE_ADMIN, ROLE_TEACHER, ROLE_DEFAULT],
+      [ROLE_SUPER_ADMIN]: [ROLE_SUPER_ADMIN, ROLE_ADMIN, ROLE_TEACHER, ROLE_DEFAULT],
       [ROLE_ADMIN]: [ROLE_ADMIN, ROLE_TEACHER, ROLE_DEFAULT],
       [ROLE_TEACHER]: [ROLE_TEACHER],
       [ROLE_PARENTOFSTUDENT]: [ROLE_PARENTOFSTUDENT, ROLE_DEFAULT],
       default: [ROLE_DEFAULT]
     }
-    return listRole[account.sub ?? 'default']
+    console.log(account?.roles[0].authority || 'default')
+    return listRole[account?.roles[0].authority ?? 'default']
   }
+
+  console.log(checkRole())
 
   return (
     <>

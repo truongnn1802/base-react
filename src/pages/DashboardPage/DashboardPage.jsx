@@ -11,7 +11,7 @@ function DashboardPage() {
         {LISTCATEGORY.map((item, index) => (
           <Card
             className='text-center rounded-[20px] basis-[30%] w-[30%] m-[5px]'
-            key={index + item.name}
+            key={index + item?.name}
             handleClick={() => navigate(item?.to)}
           >
             <img src={item?.srcImg} alt={item?.src} className='inline-block w-[150px] mt-[30px] mb-[20px]' />

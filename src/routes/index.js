@@ -13,7 +13,7 @@ import {
   ROUTE_TEST,
   ROUTE_GIAO_AN,
   ROUTE_BAI_GIANG,
-  ROLE_SUPERADMIN,
+  ROLE_SUPER_ADMIN,
   ROLE_ADMIN,
   ROLE_TEACHER,
   ROLE_PARENTOFSTUDENT,
@@ -24,7 +24,7 @@ export const publicRoutes = [
     path: ROUTE_PATH_FORGOTPASSWORD,
     component: ForgotPassword,
     layout: LayoutOnlyHeader,
-    role: ROLE_SUPERADMIN
+    role: ROLE_SUPER_ADMIN
   },
   {
     path: ROUTE_PATH_LOGIN,
@@ -44,7 +44,7 @@ export const privateRoutes = [
     path: ROUTE_PATH_HOME,
     component: DashboardPage,
     layout: LayoutOnlyHeader,
-    role: ROLE_SUPERADMIN
+    role: ROLE_DEFAULT
   },
   {
     path: ROUTE_GIAO_AN,
