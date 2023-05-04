@@ -8,7 +8,8 @@ import { Select, initTE, Input } from 'tw-elements'
 // import DashboardPage from 'src/pages/DashboardPage'
 // import LoginPage from './pages/LoginPage'
 // import DefaultLayout from 'src/layouts/DefaultLayout'
-
+import jwt_decode from 'jwt-decode'
+import { http } from 'src/utils/http'
 const TestComponent = () => {
   useEffect(() => {
     initTE({ Select, Input })
@@ -26,6 +27,16 @@ const TestComponent = () => {
   //     { name: 'Hải Dương', type: 'Tỉnh' },
   //     { name: 'Ninh Bình', type: 'Tỉnh' }
   //   ]
+
+  const handleLogin = async () => {
+    const res = await http.post('/api/v1/auth/signin', {
+      username: 'superadmin',
+      password: '123'
+    })
+
+    const jwt = jwt_decode(res?.data?.access_token)
+    console.log(jwt)
+  }
 
   return (
     <div className='mb-3 mt-[10px]'>
@@ -55,6 +66,7 @@ const TestComponent = () => {
       {/* <DashboardPage /> */}
       {/* <LoginPage /> */}
       {/* <DefaultLayout>abcd</DefaultLayout> */}
+      <button onClick={handleLogin}>Login</button>
     </div>
   )
 }

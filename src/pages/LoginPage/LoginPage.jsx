@@ -1,12 +1,14 @@
 import { useContext } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
+import jwtDecode from 'jwt-decode'
 
-import { ConfigContext } from 'src/contexts/ConfigContext'
 import InputCustom from 'src/components/Atoms/Input'
 import Button from 'src/components/Atoms/Button'
-import { Link, useNavigate } from 'react-router-dom'
+import { handleLogin } from './services.js'
+import { ConfigContext } from 'src/contexts/ConfigContext'
 import { ROUTE_PATH_HOME } from 'src/routes/constant'
 
 function LoginPage() {
@@ -26,9 +28,13 @@ function LoginPage() {
   })
 
   const handleSubmit = (values) => {
-    console.log(values)
-    setLogin('abcd')
-    navigate(ROUTE_PATH_HOME)
+    const onSetToken = (data) => {
+      localStorage.setItem('access_token', JSON.stringify(data?.access_token))
+      localStorage.setItem('refresh_token', JSON.stringify(data?.refresh_token))
+      setLogin(jwtDecode(JSON.stringify(data?.access_token)))
+      navigate(ROUTE_PATH_HOME)
+    }
+    handleLogin(values, onSetToken)
   }
   return (
     <section className='h-full bg-neutral-200'>

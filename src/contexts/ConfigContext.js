@@ -1,28 +1,29 @@
 import { createContext, useMemo, useState } from 'react'
+import jwtDecode from 'jwt-decode'
 
 export const ConfigContext = createContext(null)
 
 export function ConfigProvider({ children }) {
   const [, setReloadApp] = useState(false)
-  const [isLogin, setIsLogin] = useState(() => {
-    const isToken = JSON.parse(localStorage.getItem('token'))
-    return !!isToken
+  const [account, setAccount] = useState(() => {
+    const access_token = JSON.parse(localStorage.getItem('access_token'))
+    return access_token ? jwtDecode(access_token) : false
   })
   const setConfig = (data) => {
     console.log(data)
     setReloadApp((reload) => !reload)
   }
   const setLogin = (data) => {
-    setIsLogin(data)
+    setAccount(data)
   }
 
   const values = useMemo(
     () => ({
       setConfig,
-      isLogin,
+      account,
       setLogin
     }),
-    [isLogin]
+    [account]
   )
 
   return <ConfigContext.Provider value={values}>{children}</ConfigContext.Provider>
