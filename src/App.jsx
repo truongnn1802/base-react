@@ -23,10 +23,12 @@ const App = () => {
       [ROLE_SUPERADMIN]: [ROLE_SUPERADMIN, ROLE_ADMIN, ROLE_TEACHER, ROLE_DEFAULT],
       [ROLE_ADMIN]: [ROLE_ADMIN, ROLE_TEACHER, ROLE_DEFAULT],
       [ROLE_TEACHER]: [ROLE_TEACHER],
-      [ROLE_PARENTOFSTUDENT]: [ROLE_PARENTOFSTUDENT, ROLE_DEFAULT]
+      [ROLE_PARENTOFSTUDENT]: [ROLE_PARENTOFSTUDENT, ROLE_DEFAULT],
+      default: [ROLE_DEFAULT]
     }
-    return listRole[account.sub]
+    return listRole[account.sub ?? 'default']
   }
+
   return (
     <>
       <Routes>
