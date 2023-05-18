@@ -1,27 +1,15 @@
 import { useContext } from 'react'
 import { ConfigContext } from 'src/contexts/ConfigContext'
 import Dropdown from 'src/components/Atoms/Dropdown'
-import { ROUTE_PATH_LOGIN, ROUTE_PATH_CHANGEPASSWORD } from 'src/routes/constant'
+import { ROUTE_PATH_LOGIN } from 'src/routes/constant'
 import './index.scss'
 import { Link } from 'react-router-dom'
+import { settings } from './contants'
 function Header({ children }) {
   const { account } = useContext(ConfigContext)
   console.log(account)
   const config = account
-    ? [
-        {
-          name: 'Thông tin cá nhân',
-          to: '/'
-        },
-        {
-          name: 'Đổi mật khẩu',
-          to: ROUTE_PATH_CHANGEPASSWORD
-        },
-        {
-          name: 'Đăng xuất',
-          to: ROUTE_PATH_LOGIN
-        }
-      ]
+    ? settings[account?.roles[0].authority]
     : [
         {
           name: 'Đăng nhập',

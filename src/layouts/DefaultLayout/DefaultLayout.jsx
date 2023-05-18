@@ -8,7 +8,7 @@ import SideNav from '../components/SideNav'
 DefaultLayout.propTypes = {
   children: PropTypes.element.isRequired
 }
-function DefaultLayout({ children, dataSideNav }) {
+function DefaultLayout({ children }) {
   useEffect(() => {
     const sidenavDom = document.getElementById('sidebar')
     const contentBodyDom = document.getElementById('content-body')
@@ -22,7 +22,7 @@ function DefaultLayout({ children, dataSideNav }) {
       </Header>
       <div className='body relative'>
         <div id='sidebar'>
-          <SideNav dataNav={dataSideNav} />
+          <SideNav />
         </div>
         <div id='content-body'>{children}</div>
       </div>

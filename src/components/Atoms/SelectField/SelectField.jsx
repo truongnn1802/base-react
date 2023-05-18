@@ -31,7 +31,7 @@ function SelectField({ dataSource, selectProps, optionProps, width, label, form,
         {dataSource?.length &&
           dataSource?.map((data) => {
             return (
-              <option value={data?.value} key={data?.value} {...optionProps} style={{ height: '36px' }}>
+              <option value={data?.value} key={data?.value} {...optionProps} style={{ height: '36px', fontSize:'14px' }}>
                 {data?.name}
               </option>
             )

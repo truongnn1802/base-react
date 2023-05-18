@@ -12,6 +12,8 @@ import {
   ROLE_DEFAULT
 } from 'src/routes/constant'
 import { ConfigContext } from './contexts/ConfigContext'
+import DefaultLayout from './layouts/DefaultLayout'
+
 // import TestComponent from './TestComponent'
 const App = () => {
   const { account } = useContext(ConfigContext)
@@ -26,11 +28,8 @@ const App = () => {
       [ROLE_PARENTOFSTUDENT]: [ROLE_PARENTOFSTUDENT, ROLE_DEFAULT],
       default: [ROLE_DEFAULT]
     }
-    console.log(account?.roles[0].authority || 'default')
     return listRole[account?.roles[0].authority ?? 'default']
   }
-
-  console.log(checkRole())
 
   return (
     <>
@@ -62,7 +61,10 @@ const App = () => {
           })
           ?.map((route, index) => {
             const Component = route?.component
-            const Layout = route?.layout ? route.layout : Fragment
+            let Layout = route?.layout ? route.layout : Fragment
+            if (route.path === '/' && account?.roles[0].authority === ROLE_SUPER_ADMIN) {
+              Layout = DefaultLayout
+            }
             return (
               <Route
                 path={route.path}
@@ -78,7 +80,7 @@ const App = () => {
                   )
                 }
                 key={index}
-              />
+              ></Route>
             )
           })}
         <Route path='*' element={<h1>404 Page Not Found</h1>} />
