@@ -1,0 +1,7 @@
+input[data-te-select-input-ref] {
+  height: 36px;
+  + label + span {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
