@@ -27,7 +27,7 @@ function Nav() {
                       key={index}
                     >
                       <a
-                        className='active lg:px-2 text-[#000] dark:[&.active]:text-neutral-400 hover:text-white leading-[2.5]'
+                        className='active lg:px-2 text-[#000000] hover:text-white leading-[2.5]'
                         aria-current='page'
                         to={route?.to}
                         data-te-nav-link-ref
@@ -39,7 +39,7 @@ function Nav() {
                     // Menu đa cấp
                     <li className='lg:px-2 relative hover:cursor-pointer' data-te-nav-item-ref key={index}>
                       <div className='group inline-block h-full w-full'>
-                        <div className='active lg:px-2 text-[#000] hover:text-white leading-[2.5] rounded-sm flex items-center'>
+                        <div className='active lg:px-2 text-[#000000] hover:text-white leading-[2.5] rounded-sm flex items-center'>
                           <span className='pr-1 flex-1'>{route.name}</span>
                           <span>
                             <svg

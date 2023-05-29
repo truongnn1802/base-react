@@ -12,13 +12,15 @@ Table.propTypes = {
   handleClickCell: PropTypes.func,
   onSetPage: PropTypes.func,
   handleMoreItem: PropTypes.func,
-  onClickAdd: PropTypes.func
+  onClickAdd: PropTypes.func,
+  btnAdd: PropTypes.boolean
 }
 
 Table.defaultProps = {
   configTbl: [],
   data: [],
-  checked: false
+  checked: false,
+  btnAdd: false
 }
 
 function Table({
@@ -31,7 +33,8 @@ function Table({
   checked,
   onSetPage,
   handleMoreItem,
-  onClickAdd
+  onClickAdd,
+  btnAdd
 }) {
   const [listChecked, setListChecked] = useState()
   const [dataSource, setDataSource] = useState()
@@ -98,9 +101,7 @@ function Table({
       ? dataSource?.map((item, index) => {
           return (
             <tr
-              className={
-                'border-b border-l transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600'
-              }
+              className={'border-b border-l transition duration-300 ease-in-out hover:bg-neutral-200'}
               key={JSON.stringify(item)}
             >
               {checked > 0 && (
@@ -167,9 +168,11 @@ function Table({
 
   return (
     <div className='flex flex-col flex-1 mt-5'>
-      <div className='flex justify-end mx-[20px] my-[10px]'>
-        <Button text='Thêm mới' onClick={onClickAdd} />
-      </div>
+      {btnAdd && (
+        <div className='flex justify-end mx-[20px] my-[10px]'>
+          <Button text='Thêm mới' onClick={onClickAdd} />
+        </div>
+      )}
       {checked && (
         <select
           className='d-block h-[30px] box-content leading-[3rem] max-w-[200px] text-center py-2 px-2 my-[10px] rounded-lg border border-[#00000080] focus:outline-0 cursor-pointer'
@@ -258,7 +261,7 @@ function Table({
             <li>
               {page === 1 ? (
                 <a
-                  className='cursor-not-allowed text-[14px] h-[36px] w-[30px] text-center relative block rounded bg-transparent text-sm text-neutral-600 transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white'
+                  className='cursor-not-allowed text-[14px] h-[36px] w-[30px] text-center relative block rounded bg-transparent text-sm text-neutral-600 transition-all duration-300 hover:bg-neutral-100'
                   href='#'
                   aria-label='Previous'
                 >
@@ -268,7 +271,7 @@ function Table({
                 </a>
               ) : (
                 <a
-                  className='relative block rounded text-[14px] bg-transparent h-[36px] w-[30px] text-center  text-neutral-600 transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white'
+                  className='relative block rounded text-[14px] bg-transparent h-[36px] w-[30px] text-center  text-neutral-600 transition-all duration-300 hover:bg-neutral-100'
                   href='#'
                   aria-label='Previous'
                 >
@@ -286,7 +289,7 @@ function Table({
                 return (
                   <li key={pageNumber} className='h-[36px] w-[30px] text-center'>
                     <a
-                      className={`relative text-[14px] cursor-pointer block leading-[36px] rounded-full font-medium text-secondary-800 transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white`}
+                      className={`relative text-[14px] cursor-pointer block leading-[36px] rounded-full font-medium text-secondary-800 transition-all duration-300 hover:bg-neutral-100`}
                       // to={`/tinh-thanh-pho?page=${pageNumber}`}
                       onClick={() => {
                         onSetPage && onSetPage({ page: pageNumber })
@@ -300,7 +303,7 @@ function Table({
             <li>
               {page === totalPage ? (
                 <a
-                  className='cursor-not-allowed relative block rounded bg-transparent text-[14px] h-[36px] w-[30px] text-center text-neutral-600 transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white'
+                  className='cursor-not-allowed relative block rounded bg-transparent text-[14px] h-[36px] w-[30px] text-center text-neutral-600 transition-all duration-300 hover:bg-neutral-100'
                   href='#'
                   aria-label='Next'
                 >
@@ -310,7 +313,7 @@ function Table({
                 </a>
               ) : (
                 <a
-                  className='relative block rounded bg-transparent text-[14px] h-[36px] w-[30px] text-center text-neutral-600 transition-all duration-300 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white'
+                  className='relative block rounded bg-transparent text-[14px] h-[36px] w-[30px] text-center text-neutral-600 transition-all duration-300 hover:bg-neutral-100'
                   href='#'
                   aria-label='Next'
                 >

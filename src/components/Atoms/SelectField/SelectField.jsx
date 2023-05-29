@@ -31,14 +31,19 @@ function SelectField({ dataSource, selectProps, optionProps, width, label, form,
         {dataSource?.length &&
           dataSource?.map((data) => {
             return (
-              <option value={data?.value} key={data?.value} {...optionProps} style={{ height: '36px', fontSize:'14px' }}>
+              <option
+                value={data?.value}
+                key={data?.value}
+                {...optionProps}
+                style={{ height: '36px', fontSize: '14px' }}
+              >
                 {data?.name}
               </option>
             )
           })}
       </select>
       {label && (
-        <label className='px-[5px]' data-te-select-label-ref>
+        <label className='px-[5px]' data-te-select-label-ref style={{ color: '#000000' }}>
           {label}
         </label>
       )}

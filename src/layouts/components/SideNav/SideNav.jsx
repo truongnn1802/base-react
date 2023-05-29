@@ -18,7 +18,7 @@ function SideNav() {
           overflow-auto 
           bg-gray-50 
           shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] 
-          data-[te-sidenav-hidden='false']:translate-x-0 dark:bg-zinc-800"
+          data-[te-sidenav-hidden='false']:translate-x-0"
       data-te-sidenav-init
       data-te-sidenav-hidden='false'
       data-te-sidenav-position='absolute'
@@ -45,13 +45,13 @@ function SideNav() {
                 {menu?.childrens ? (
                   <Accordion
                     title={menu?.name}
-                    classNameTitle='group flex h-12 cursor-pointer items-center truncate rounded-[5px] px-[5px] text-[1.4rem] text-gray-700 outline-none transition duration-300 ease-linear dark:focus:bg-white/10 dark:active:bg-white/10 font-medium'
+                    classNameTitle='group flex h-12 cursor-pointer items-center truncate rounded-[5px] px-[5px] text-[1.4rem] text-[#000000] outline-none transition duration-300 ease-linear  font-medium'
                   >
                     <>
                       {menu.childrens?.map((child, index) => (
                         <div key={new Date().getTime() + '' + index}>
                           {child?.group && (
-                            <span className='group flex h-12 cursor-pointer items-center truncate rounded-[5px] px-[10px] text-[1.4rem] text-gray-700 outline-none transition duration-300 ease-linear font-semibold'>
+                            <span className='group flex h-12 cursor-pointer items-center truncate rounded-[5px] px-[10px] text-[1.4rem] text-[#000000] outline-none transition duration-300 ease-linear font-semibold'>
                               {child?.group}
                             </span>
                           )}
@@ -59,7 +59,7 @@ function SideNav() {
                             {child?.items?.map((sub, i) => (
                               <li
                                 key={new Date().getTime() + i + ''}
-                                className='group flex h-12 cursor-pointer items-center truncate rounded-[5px] px-[15px] text-[1.4rem] text-gray-700 outline-none transition duration-300 ease-linear hover:bg-blue-400/10 hover:text-blue-600 hover:outline-none focus:bg-blue-400/10 focus:text-blue-600 focus:outline-none active:bg-blue-400/10 active:text-blue-600 active:outline-none data-[te-sidenav-state-active]:text-blue-600 data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10'
+                                className='group flex h-12 cursor-pointer items-center truncate rounded-[5px] px-[15px] text-[1.4rem] text-[#000000] outline-none transition duration-300 ease-linear hover:bg-blue-400/10 hover:text-blue-600 hover:outline-none focus:bg-blue-400/10 focus:text-blue-600 focus:outline-none active:bg-blue-400/10 active:text-blue-600 active:outline-none data-[te-sidenav-state-active]:text-blue-600 data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none'
                               >
                                 <Link to={sub.to}>{sub.name}</Link>
                               </li>
@@ -70,7 +70,7 @@ function SideNav() {
                     </>
                   </Accordion>
                 ) : (
-                  <li className='group flex h-12 cursor-pointer items-center truncate rounded-[5px] px-[5px] text-[1.4rem] text-gray-700 outline-none transition duration-300 ease-linear hover:bg-blue-400/10 hover:text-blue-600 hover:outline-none focus:bg-blue-400/10 focus:text-blue-600 focus:outline-none active:bg-blue-400/10 active:text-blue-600 active:outline-none data-[te-sidenav-state-active]:text-blue-600 data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10'>
+                  <li className='group flex h-12 cursor-pointer items-center truncate rounded-[5px] px-[5px] text-[1.4rem] text-[#000000] outline-none transition duration-300 ease-linear hover:bg-blue-400/10 hover:text-blue-600 hover:outline-none focus:bg-blue-400/10 focus:text-blue-600 focus:outline-none active:bg-blue-400/10 active:text-blue-600 active:outline-none data-[te-sidenav-state-active]:text-blue-600 data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none'>
                     {menu?.name}
                   </li>
                 )}

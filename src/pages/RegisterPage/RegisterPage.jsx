@@ -13,10 +13,10 @@ import { ConfigContext } from 'src/contexts/ConfigContext'
 import { ROUTE_PATH_HOME } from 'src/routes/constant'
 
 const dataSource = [
-  {name:"Super Admin",value:'1'},
-  {name:"Admin",value:'2'},
-  {name:"Giáo viên",value:'3'},
-  {name:"Phụ huynh, học sinh",value:'4'}
+  { name: 'Super Admin', value: '1' },
+  { name: 'Admin', value: '2' },
+  { name: 'Giáo viên', value: '3' },
+  { name: 'Phụ huynh, học sinh', value: '4' }
 ]
 
 function RegisterPage() {

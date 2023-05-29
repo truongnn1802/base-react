@@ -34,27 +34,29 @@ const App = () => {
   return (
     <>
       <Routes>
-        {publicRoutes
-          ?.filter((i) => {
-            return checkRole()?.includes(i.role)
-          })
-          ?.map((route, index) => {
-            const Component = route?.component
-            const Layout = route?.layout ? route.layout : <Fragment></Fragment>
-            return (
-              <Route
-                path={route.path}
-                element={
-                  <Suspense fallback={<p>Loading...</p>}>
-                    <Layout>
-                      <Component />
-                    </Layout>
-                  </Suspense>
-                }
-                key={index}
-              />
-            )
-          })}
+        {publicRoutes?.map((route, index) => {
+          const Component = route?.component
+          const Layout = route?.layout ? route.layout : <Fragment></Fragment>
+          return (
+            <Route
+              path={route.path}
+              element={
+                <Suspense fallback={<p>Loading...</p>}>
+                  <Layout>
+                    <Component />
+                  </Layout>
+                </Suspense>
+              }
+              key={index}
+            >
+              {route?.childrens &&
+                route?.childrens?.map((child, index) => {
+                  const Component = child?.component
+                  return <Route path={child.path} element={<Component />} key={index} />
+                })}
+            </Route>
+          )
+        })}
         {privateRoutes
           ?.filter((i) => {
             return checkRole()?.includes(i.role)

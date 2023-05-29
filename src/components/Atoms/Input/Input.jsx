@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { initTE, Input } from 'tw-elements'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
-
+import './input.scss'
 InputField.propTypes = {
   label: PropTypes.string,
   idInput: PropTypes.string.isRequired,
@@ -27,7 +27,7 @@ InputField.defaultProps = {
 
 function InputField({ label, idInput, type, width, inputProps, name, form, required }) {
   const { classInput, argInput } = inputProps
-
+  const formProps = form.register ? { ...form.register(name) } : {}
   const [eye, setEye] = useState(true)
   const eyeRef = useRef()
   useEffect(() => {
@@ -61,7 +61,7 @@ function InputField({ label, idInput, type, width, inputProps, name, form, requi
         className={classNameInput}
         id={idInput}
         name={name}
-        {...form.register(name)}
+        {...formProps}
         {...argInput}
         onInvalid={handleInvalid}
         required={required}
@@ -78,7 +78,7 @@ function InputField({ label, idInput, type, width, inputProps, name, form, requi
       )}
       <label
         htmlFor={idInput}
-        className='pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-x-[- 5px] peer-focus:-translate-y-[50%] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-x-[- 5px] peer-data-[te-input-state-active]:-translate-y-[50%] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary'
+        className='pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2] transition-all duration-200 ease-out peer-focus:-translate-x-[- 5px] peer-focus:-translate-y-[50%] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-x-[- 5px] peer-data-[te-input-state-active]:-translate-y-[50%] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none'
       >
         {label}
         {required && <span className='ml-[4px] text-[#ff0000]'>*</span>}

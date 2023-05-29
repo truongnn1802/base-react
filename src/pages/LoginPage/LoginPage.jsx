@@ -1,18 +1,18 @@
-import { useContext } from 'react'
+// import { useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
-import jwtDecode from 'jwt-decode'
+// import jwtDecode from 'jwt-decode'
 
 import InputCustom from 'src/components/Atoms/Input'
 import Button from 'src/components/Atoms/Button'
-import { handleLogin } from './services.js'
-import { ConfigContext } from 'src/contexts/ConfigContext'
-import { ROUTE_PATH_HOME } from 'src/routes/constant'
+// import { handleLogin } from './services.js'
+// import { ConfigContext } from 'src/contexts/ConfigContext'
+// import { ROUTE_PATH_HOME } from 'src/routes/constant'
 
 function LoginPage() {
-  const { setLogin } = useContext(ConfigContext)
+  // const { setLogin } = useContext(ConfigContext)
   const schema = yup.object({
     username: yup.string().required('Vui lòng nhập tên đăng nhập!'),
     password: yup.string().required('Vui lòng nhập mật khẩu!')
@@ -27,19 +27,23 @@ function LoginPage() {
     resolver: yupResolver(schema)
   })
 
-  const handleSubmit = (values) => {
-    const onSetToken = (data) => {
-      localStorage.setItem('access_token', JSON.stringify(data?.access_token))
-      localStorage.setItem('refresh_token', JSON.stringify(data?.refresh_token))
-      setLogin(jwtDecode(JSON.stringify(data?.access_token)))
-      navigate(ROUTE_PATH_HOME)
-    }
-    handleLogin(values, onSetToken)
+  // const handleSubmit1 = (values) => {
+  //   const onSetToken = (data) => {
+  //     localStorage.setItem('access_token', JSON.stringify(data?.access_token))
+  //     localStorage.setItem('refresh_token', JSON.stringify(data?.refresh_token))
+  //     setLogin(jwtDecode(JSON.stringify(data?.access_token)))
+  //     navigate(ROUTE_PATH_HOME)
+  //   }
+  //   handleLogin(values, onSetToken)
+  // }
+  const handleSubmit = () => {
+    navigate('/')
+    // handleLogin(values, onSetToken)
   }
   return (
     <section className='h-full bg-neutral-200'>
       <div className='w-full text-center'>
-        <div className='block rounded-lg bg-white dark:bg-neutral-800'>
+        <div className='block rounded-lg bg-white'>
           <div className='px-4 md:px-0 w-[auto] max-w-[300px] m-[auto]  pt-[100px]'>
             <div className='inline-block text-center'>
               <img

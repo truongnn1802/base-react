@@ -16,8 +16,8 @@ function ModalForm({
   return (
     <Modal
       isOpen={isOpen}
-      //   closeModal={closeModal} // click ngoài modal sẽ tắt modal
-      //   shouldCloseOnOverlayClick={false}
+      closeModal={closeModal} // click ngoài modal sẽ tắt modal
+      shouldCloseOnOverlayClick={false}
       size={size ?? 'large'}
       styles={styles}
       customSize={customSize}
@@ -29,7 +29,7 @@ function ModalForm({
         <div className='flex justify-center mt-[20px]'>
           <Button text={textClose ?? 'Đóng'} typeBtn={'error'} onClick={closeModal} />
           <div className='w-[10px]'></div>
-          <Button type='submit' text={textSubmit ?? 'Thêm mới'} typeBtn={'primary'} onClick={closeModal} />
+          <Button type='submit' text={textSubmit ?? 'Thêm mới'} typeBtn={'primary'} onClick={onSubmit} />
         </div>
       </form>
     </Modal>

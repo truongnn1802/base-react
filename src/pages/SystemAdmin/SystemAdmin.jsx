@@ -1,5 +1,7 @@
+import { Outlet } from 'react-router-dom'
+
 function SystemAdmin() {
-  return <p>SystemAdmin</p>
+  return <Outlet />
 }
 
 export default SystemAdmin

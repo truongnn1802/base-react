@@ -1,0 +1,25 @@
+.avatar {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: 1px solid #ccc;
+    }
+    .icon-change-avatar {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        display: inline-block;
+        width: 22px;
+        height: 22px;
+        background: #ccc;
+        border: 1px solid #ccc;
+        border-radius: 50%;
+        text-align: center;
+        transform: translateX(-50%);
+        cursor: pointer;
+    }
+}
